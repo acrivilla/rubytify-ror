@@ -33,3 +33,5 @@ module AyendaTest
     config.api_only = true
   end
 end
+
+RSpotify::authenticate("ae74533489d64270add6c06dbf3f5a55", "5b13ab89681f45d48dd662dfb02d31eb")
