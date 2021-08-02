@@ -48,7 +48,7 @@ namespace :loadcatalog do
                         end
                         Album.create(
                             :name => albumApi.name,
-                            :image => albumApi.images.first["url"],
+                            :image => urlImagen,
                             :spotify_url => albumApi.external_urls["spotify"],
                             :total_tracks => albumApi.total_tracks,
                             :spotify_id => albumApi.id,
