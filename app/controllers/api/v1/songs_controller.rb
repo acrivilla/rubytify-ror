@@ -8,7 +8,11 @@ class Api::V1::SongsController < ApplicationController
                 @randomAlbum = @randomAlbum[rand(@randomAlbum.length)]
                 @randomSong = Song.where("album_id = #{@randomAlbum.id}")
                 @randomSong = @randomSong[rand(@randomSong.length)]
-                render json: { data: @randomSong }
+                if !(@randomSong.nil?)
+                    render json: { data: @randomSong }
+                else
+                    render json: { data: [] }
+                end
             else
                 render json: { data: [] }
             end

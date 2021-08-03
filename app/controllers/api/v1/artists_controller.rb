@@ -1,8 +1,12 @@
 class Api::V1::ArtistsController < ApplicationController
     
-    def index        
+    def index       
         @artists = Artist.order('popularity desc')
-        render json: { data: @artists }
+        if @artists.count > 0 
+            render json: { data: @artists }
+        else
+            render json: { data: []  }
+        end
     end
 
     def albums

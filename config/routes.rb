@@ -15,7 +15,7 @@ Rails.application.routes.draw do
           get :songs
         end
       end
-      resources :songs, :path => "genres" do
+      resources :songs, :path => "genres"  do
         member do
           get :songs, :key => "genre_name", :path => "random_song"
         end
