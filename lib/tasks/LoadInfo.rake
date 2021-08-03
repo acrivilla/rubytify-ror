@@ -40,11 +40,11 @@ namespace :loadcatalog do
                 albumsFound.each do | albumApi |
                     if !Album.exists?(spotify_id: albumApi.id)
                         urlImagen = ""
-                        albumApi.images do | imagenes |
-                            if !(imagenes["url"].presence?)
-                                urlImagen = imagenes["url"]
+                        albumApi.images.each do | imagen |
+                            if !imagen["url"].empty?
+                                urlImagen = imagen["url"]
                                 break
-                            end
+                            end 
                         end
                         Album.create(
                             :name => albumApi.name,
