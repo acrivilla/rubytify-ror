@@ -1,7 +1,7 @@
 class Api::V1::SongsController < ApplicationController
     def songs
         if !(params[:id].nil?)
-            @artists = Artist.where("genres like ?","%#{params[:id]}%")
+            @artists = Artist.select{ |artist| artist.genres.include? "#{params[:id]}" }
             if @artists.count > 0
                 @randomArtist =  @artists[rand(@artists.length)]
                 @randomAlbum = Album.where("artist_id = #{@randomArtist.id}")
