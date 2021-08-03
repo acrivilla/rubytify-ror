@@ -1,6 +1,11 @@
 class ChangeDataTypeFks < ActiveRecord::Migration[5.2]
   def change
-    change_column :albums, :artist_id, :integer
-    change_column :songs, :album_id, :integer
+    rename_column :albums, :artist_id, :artist_id_text
+    add_column :albums, :artist_id, :integer
+    remove_column :albums, :artist_id_text
+
+    ename_column :songs, :album_id, :album_id_text
+    add_column :songs, :album_id, :integer
+    remove_column :songs, :album_id_text
   end
 end
